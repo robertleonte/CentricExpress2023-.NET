@@ -67,6 +67,47 @@ namespace RoomWithAView.Controllers
             return Ok(_rooms);
         }
 
+        [HttpGet]
+        [Route("{number}")]
+        public IActionResult GetById(int number)
+        {
+            var room = _rooms.FirstOrDefault(existingRoom => existingRoom.Number == number);
+            return Ok(room);
+        }
+
+        [HttpGet]
+        [Route("price")]
+        public IActionResult FilterByPrice([FromQuery] int priceMin, [FromQuery] int priceMax)
+        {
+            var roomsFiltered = _rooms.Where(existingRoom => existingRoom.Price >= priceMin && existingRoom.Price <= priceMax);
+            return Ok(roomsFiltered);
+        }
+
+        [HttpGet]
+        [Route("category")]
+        public IActionResult FilterByCategory([FromQuery] string category)
+        {
+            var roomsFiltered = _rooms.Where(existingRoom => existingRoom.Category == category);
+            return Ok(roomsFiltered);
+        }
+
+        [HttpPut]
+        [Route("{number}")]
+        public IActionResult Put(int number, [FromBody] Room room)
+        {
+            var roomToEdit = _rooms.FirstOrDefault(existingRoom => existingRoom.Number == number);
+
+            if (roomToEdit != null)
+            {
+                roomToEdit.Price = room.Price;
+                roomToEdit.Capacity = room.Capacity;
+                roomToEdit.Facilities = room.Facilities;
+                roomToEdit.Description = room.Description;
+            }
+
+            return NoContent();
+        }
+
         [HttpPost]
         public IActionResult Add([FromBody] Room room)
         {
