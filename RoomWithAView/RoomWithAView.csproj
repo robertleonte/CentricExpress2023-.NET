@@ -5,4 +5,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RoomWithAView.Business\RoomWithAView.Business.csproj" />
+  </ItemGroup>
+
 </Project>

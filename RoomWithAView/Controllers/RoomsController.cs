@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using RoomWithAView.Models;
+using RoomWithAView.Business.Rooms;
+using RoomWithAView.Business.Dto;
 
 namespace RoomWithAView.Controllers
 {
@@ -7,71 +8,25 @@ namespace RoomWithAView.Controllers
     [Route("api/[controller]")]
     public class RoomsController : ControllerBase
     {
-        private static List<Room> _rooms = new()
+        private readonly IRoomBusiness roomBusiness;
+
+        public RoomsController(IRoomBusiness roomBusiness)
         {
-            new Room
-            {
-                Id = Guid.NewGuid(),
-                Description = "Beautiful relaxing place for your tired feet",
-                Facilities = new List<string> { "Wi-Fi", "TV", "Air conditioner", "Mini playground" },
-                Price = 500,
-                Category = "Suite",
-                Capacity = 5,
-                Number = 100
-            },
-            new Room
-            {
-                Id = Guid.NewGuid(),
-                Description = "A perfect recharging space",
-                Facilities = new List<string> { "Wi-Fi", "TV", "Air conditioner", "Mini bar" },
-                Price = 200,
-                Category = "Single",
-                Capacity = 1,
-                Number = 101
-            },
-            new Room
-            {
-                Id = Guid.NewGuid(),
-                Description = "Let yourself be spoiled by the comfort",
-                Facilities = new List<string> { "Wi-Fi", "TV", "Air conditioner", "Bath tub" },
-                Price = 400,
-                Category = "Double",
-                Capacity = 2,
-                Number = 102
-            },
-            new Room
-            {
-                Id = Guid.NewGuid(),
-                Description = "Let yourself be spoiled by the comfort",
-                Facilities = new List<string> { "Wi-Fi", "TV", "Air conditioner", "Bath tub" },
-                Price = 400,
-                Category = "Double",
-                Capacity = 2,
-                Number = 200
-            },
-            new Room
-            {
-                Id = Guid.NewGuid(),
-                Description = "Enter the oasis of a calm and peaceful stay",
-                Facilities = new List<string> { "Wi-Fi", "TV", "Air conditioner", "Bath tub", "Mini bar", "Daily snacks", "Ocean view" },
-                Price = 600,
-                Category = "Deluxe",
-                Capacity = 4,
-                Number = 201
-            },
-        };
+            this.roomBusiness = roomBusiness;
+        }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_rooms);
+            var rooms = this.roomBusiness.GetAll();
+            return Ok(rooms);
         }
 
         [HttpGet]
         [Route("{number}")]
-        public IActionResult GetById(int number)
+        public IActionResult GetByNumber(int number)
         {
-            var room = _rooms.FirstOrDefault(existingRoom => existingRoom.Number == number);
+            var room = this.roomBusiness.GetByNumber(number);
             return Ok(room);
         }
 
@@ -79,7 +34,7 @@ namespace RoomWithAView.Controllers
         [Route("price")]
         public IActionResult FilterByPrice([FromQuery] int priceMin, [FromQuery] int priceMax)
         {
-            var roomsFiltered = _rooms.Where(existingRoom => existingRoom.Price >= priceMin && existingRoom.Price <= priceMax);
+            var roomsFiltered = this.roomBusiness.FilterByPrice(priceMin, priceMax);
             return Ok(roomsFiltered);
         }
 
@@ -87,31 +42,22 @@ namespace RoomWithAView.Controllers
         [Route("category")]
         public IActionResult FilterByCategory([FromQuery] string category)
         {
-            var roomsFiltered = _rooms.Where(existingRoom => existingRoom.Category == category);
+            var roomsFiltered = this.roomBusiness.FilterByCategory(category);
             return Ok(roomsFiltered);
         }
 
         [HttpPut]
         [Route("{number}")]
-        public IActionResult Put(int number, [FromBody] Room room)
+        public IActionResult Put(int number, [FromBody] RoomDto room)
         {
-            var roomToEdit = _rooms.FirstOrDefault(existingRoom => existingRoom.Number == number);
-
-            if (roomToEdit != null)
-            {
-                roomToEdit.Price = room.Price;
-                roomToEdit.Capacity = room.Capacity;
-                roomToEdit.Facilities = room.Facilities;
-                roomToEdit.Description = room.Description;
-            }
-
-            return NoContent();
+            this.roomBusiness.Update(number, room);
+            return Ok(room);
         }
 
         [HttpPost]
-        public IActionResult Add([FromBody] Room room)
+        public IActionResult Add([FromBody] RoomDto room)
         {
-            _rooms.Add(room);
+            this.roomBusiness.Add(room);
             return Ok(room);
         }
     }
