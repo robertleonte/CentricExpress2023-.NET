@@ -83,17 +83,9 @@ namespace RoomWithAView.Controllers
             return Ok(roomsFiltered);
         }
 
-        [HttpGet]
-        [Route("category")]
-        public IActionResult FilterByCategory([FromQuery] string category)
-        {
-            var roomsFiltered = _rooms.Where(existingRoom => existingRoom.Category == category);
-            return Ok(roomsFiltered);
-        }
-
         [HttpPut]
         [Route("{number}")]
-        public IActionResult Put(int number, [FromBody] Room room)
+        public IActionResult Update(int number, [FromBody] Room room)
         {
             var roomToEdit = _rooms.FirstOrDefault(existingRoom => existingRoom.Number == number);
 
