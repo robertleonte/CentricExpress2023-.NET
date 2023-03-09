@@ -1,10 +1,10 @@
-﻿namespace Rooms.Data.Entities
+﻿namespace RoomWithAView.Data.Entities
 {
     public class Reservation
     {
         public Guid Id { get; set; }
 
-        public int RoomNumber { get; set; }
+        public Guid RoomId { get; set; }
 
         public DateTime CheckIn { get; set; }
 
@@ -13,21 +13,21 @@
         public int TotalPayment { get; set; }
 
         public Reservation(
-            int roomNumber,
+            Guid roomId,
             DateTime checkIn,
             DateTime checkOut,
             int totalPayment)
         {
             Id = Guid.NewGuid();
-            RoomNumber = roomNumber;
+            RoomId = roomId;
             CheckIn = checkIn;
             CheckOut = checkOut;
             TotalPayment = totalPayment;
         }
 
-        public void Update(int roomNumber, DateTime checkIn, DateTime checkOut, int totalPayment)
+        public void Update(Guid roomId, DateTime checkIn, DateTime checkOut, int totalPayment)
         {
-            RoomNumber = roomNumber;
+            RoomId = roomId;
             CheckIn = checkIn;
             CheckOut = checkOut;
             TotalPayment = totalPayment;

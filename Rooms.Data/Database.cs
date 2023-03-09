@@ -1,16 +1,18 @@
-﻿using Rooms.Data.Entities;
+﻿using RoomWithAView.Data.Entities;
 
-namespace Rooms.Data
+namespace RoomWithAView.Data
 {
     public static class Database
     {
-        public static List<Reservation> Reservations = new List<Reservation> {
-           new Reservation(100, new DateTime(2023, 3, 6, 12, 0, 0), new DateTime(2023, 3, 13, 12, 0, 0), 3500),
-           new Reservation(102, new DateTime(2023, 3, 6, 12, 0, 0), new DateTime(2023, 3, 10, 12, 0, 0), 1600),
-           new Reservation(201, new DateTime(2023, 3, 10, 12, 0, 0), new DateTime(2023, 3, 12, 14, 0, 0), 1200),
+        public static List<Reservation> Reservations = new()
+        {
+           new Reservation(Guid.NewGuid(), new DateTime(2023, 3, 6, 12, 0, 0), new DateTime(2023, 3, 13, 12, 0, 0), 3500),
+           new Reservation(Guid.NewGuid(), new DateTime(2023, 3, 6, 12, 0, 0), new DateTime(2023, 3, 10, 12, 0, 0), 1600),
+           new Reservation(Guid.NewGuid(), new DateTime(2023, 3, 10, 12, 0, 0), new DateTime(2023, 3, 12, 14, 0, 0), 1200),
         };
 
-        public static List<Room> Rooms = new List<Room> {
+        public static List<Room> Rooms = new()
+        {
             new Room(
                 100,
                 "Suite",

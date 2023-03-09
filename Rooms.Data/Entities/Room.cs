@@ -1,4 +1,4 @@
-﻿namespace Rooms.Data.Entities
+﻿namespace RoomWithAView.Data.Entities
 {
     public class Room
     {

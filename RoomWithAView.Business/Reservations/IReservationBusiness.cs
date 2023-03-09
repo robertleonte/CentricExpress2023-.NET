@@ -8,8 +8,6 @@ namespace RoomWithAView.Business.Reservations
 
         ReservationDto? GetById(Guid id);
 
-        List<ReservationDto> FilterByDates(DateTime checkIn, DateTime checkOut);
-
         void Add(ReservationDto reservationDto);
 
         void Update(Guid id, ReservationDto reservationDto);

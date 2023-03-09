@@ -1,6 +1,6 @@
-﻿using Rooms.Data;
-using Rooms.Data.Entities;
-using RoomWithAView.Business.Dto;
+﻿using RoomWithAView.Business.Dto;
+using RoomWithAView.Data;
+using RoomWithAView.Data.Entities;
 
 namespace RoomWithAView.Business.Rooms
 {
@@ -8,25 +8,19 @@ namespace RoomWithAView.Business.Rooms
     {
         public List<RoomDto> GetAll()
         {
-            return Database.Rooms.Select(r => MapRoomToDto(r)).ToList();
+            return Database.Rooms.Select(room => MapRoomToDto(room)).ToList();
         }
 
-        public RoomDto? GetByNumber(int number)
+        public RoomDto? GetById(Guid id)
         {
-            return Database.Rooms.Where(r => r.Number == number)
-                .Select(r => MapRoomToDto(r)).FirstOrDefault();
+            return Database.Rooms.Where(room => room.Id == id)
+                .Select(room => MapRoomToDto(room)).FirstOrDefault();
         }
 
         public List<RoomDto> FilterByPrice(int priceMin, int priceMax)
         {
-            return Database.Rooms.FindAll(r => r.Price >= priceMin && r.Price <= priceMax)
-                .Select(r => MapRoomToDto(r)).ToList();
-        }
-
-        public List<RoomDto> FilterByCategory(string category)
-        {
-            return Database.Rooms.FindAll(r => r.Category == category)
-                .Select(r => MapRoomToDto(r)).ToList();
+            return Database.Rooms.FindAll(room => room.Price >= priceMin && room.Price <= priceMax)
+                .Select(room => MapRoomToDto(room)).ToList();
         }
 
         public void Add(RoomDto roomDto)
@@ -41,22 +35,22 @@ namespace RoomWithAView.Business.Rooms
             Database.Rooms.Add(newRoom);
         }
 
-        public void Update(int number, RoomDto roomDto)
+        public void Update(Guid id, RoomDto roomDto)
         {
-            var room = Database.Rooms.SingleOrDefault(r => r.Number == number);
-            room?.Update(roomDto.Price, roomDto.Capacity, roomDto.Description, roomDto.Facilities);
+            var roomToUpdate = Database.Rooms.SingleOrDefault(room => room.Id == id);
+            roomToUpdate?.Update(roomDto.Price, roomDto.Capacity, roomDto.Description, roomDto.Facilities);
         }
 
-        private static RoomDto MapRoomToDto(Room r)
+        private static RoomDto MapRoomToDto(Room room)
         {
             return new RoomDto(
-                r.Id,
-                r.Number,
-                r.Category,
-                r.Capacity,
-                r.Description,
-                r.Price,
-                r.Facilities);
+                room.Id,
+                room.Number,
+                room.Category,
+                room.Capacity,
+                room.Description,
+                room.Price,
+                room.Facilities);
         }
     }
 }

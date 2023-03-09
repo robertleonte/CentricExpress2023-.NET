@@ -6,14 +6,12 @@ namespace RoomWithAView.Business.Rooms
     {
         List<RoomDto> GetAll();
 
-        RoomDto? GetByNumber(int number);
+        RoomDto? GetById(Guid id);
 
         List<RoomDto> FilterByPrice(int priceMin, int priceMax);
 
-        List<RoomDto> FilterByCategory(string category);
-
         void Add(RoomDto roomDto);
 
-        void Update(int number, RoomDto roomDto);
+        void Update(Guid id, RoomDto roomDto);
     }
 }

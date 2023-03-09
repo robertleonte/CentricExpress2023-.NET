@@ -4,7 +4,7 @@
     {
         public Guid Id { get; set; }
 
-        public int RoomNumber { get; set; }
+        public Guid RoomId { get; set; }
 
         public DateTime CheckIn { get; set; }
 
@@ -14,13 +14,13 @@
 
         public ReservationDto(
             Guid id,
-            int roomNumber,
+            Guid roomId,
             DateTime checkIn,
             DateTime checkOut,
             int totalPayment)
         {
             Id = id;
-            RoomNumber = roomNumber;
+            RoomId= roomId;
             CheckIn = checkIn;
             CheckOut = checkOut;
             TotalPayment = totalPayment;

@@ -24,9 +24,9 @@ namespace RoomWithAView.Controllers
 
         [HttpGet]
         [Route("{number}")]
-        public IActionResult GetByNumber(int number)
+        public IActionResult GetById(Guid id)
         {
-            var room = this._roomBusiness.GetByNumber(number);
+            var room = this._roomBusiness.GetById(id);
             return Ok(room);
         }
 
@@ -40,9 +40,9 @@ namespace RoomWithAView.Controllers
 
         [HttpPut]
         [Route("{number}")]
-        public IActionResult Update(int number, [FromBody] RoomDto room)
+        public IActionResult Update(Guid id, [FromBody] RoomDto room)
         {
-            this._roomBusiness.Update(number, room);
+            this._roomBusiness.Update(id, room);
             return Ok(room);
         }
 
