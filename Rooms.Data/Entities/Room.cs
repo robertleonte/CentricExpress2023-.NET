@@ -1,7 +1,30 @@
-﻿namespace Rooms.Data.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace Rooms.Data.Entities
 {
     public class Room
     {
+        public Room(
+            Guid id,
+            int number,
+            string category,
+            int capacity,
+            string description,
+            int price,
+            string facilities)
+        {
+            Id = id;
+            Number = number;
+            Category = category;
+            Capacity = capacity;
+            Description = description;
+            Price = price;
+            Facilities = facilities;
+        }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         public int Number { get; set; }
@@ -14,31 +37,18 @@
 
         public int Price { get; set; }
 
-        public List<string> Facilities { get; set; }
+        public string Facilities { get; set; }
 
-        public Room(
-            int number,
-            string category,
-            int capacity,
-            string description,
-            int price,
-            List<string> facilities)
+        public List<Reservation> Reservations { get; set; }
+
+        public void Update(int number, string category, int price, int capacity, string description, string facilities)
         {
-            Id = Guid.NewGuid();
             Number = number;
             Category = category;
-            Capacity = capacity;
-            Description = description;
-            Price = price;
-            Facilities = new List<string>(facilities);
-        }
-
-        public void Update(int price, int capacity, string description, List<string> facilities)
-        {
             Price = price;
             Capacity = capacity;
             Description = description;
-            Facilities = new List<string>(facilities);
+            Facilities = facilities;
         }
     }
 }

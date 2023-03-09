@@ -14,7 +14,9 @@
 
         public int Price { get; set; }
 
-        public List<string> Facilities { get; set; }
+        public string Facilities { get; set; }
+
+        public List<ReservationDto> Reservations { get; set; }
 
         public RoomDto(
             Guid id,
@@ -23,7 +25,8 @@
             int capacity,
             string description,
             int price,
-            List<string> facilities)
+            string facilities,
+            List<ReservationDto> reservations)
         {
             Id = id;
             Number = number;
@@ -31,7 +34,8 @@
             Capacity = capacity;
             Description = description;
             Price = price;
-            Facilities = new List<string>(facilities);
+            Facilities = facilities;
+            Reservations = reservations;
         }
     }
 }

@@ -1,62 +1,86 @@
-﻿using Rooms.Data;
-using Rooms.Data.Entities;
+﻿using Rooms.Data.Entities;
 using RoomWithAView.Business.Dto;
+using RoomWithAView.Data;
 
 namespace RoomWithAView.Business.Rooms
 {
     public class RoomBusiness : IRoomBusiness
     {
+        private readonly IRoomRepository _roomRepository;
+
+        public RoomBusiness(IRoomRepository roomRepository)
+        {
+            _roomRepository = roomRepository;
+        }
         public List<RoomDto> GetAll()
         {
-            return Database.Rooms.Select(r => MapRoomToDto(r)).ToList();
+            return _roomRepository.Get().Select(r => MapRoomToDto(r)).ToList();
         }
 
-        public RoomDto? GetByNumber(int number)
+        public RoomDto? GetById(Guid id)
         {
-            return Database.Rooms.Where(r => r.Number == number)
-                .Select(r => MapRoomToDto(r)).FirstOrDefault();
+             var room = _roomRepository.GetById(id);
+            return MapRoomToDto(room);
         }
 
         public List<RoomDto> FilterByPrice(int priceMin, int priceMax)
         {
-            return Database.Rooms.FindAll(r => r.Price >= priceMin && r.Price <= priceMax)
-                .Select(r => MapRoomToDto(r)).ToList();
-        }
-
-        public List<RoomDto> FilterByCategory(string category)
-        {
-            return Database.Rooms.FindAll(r => r.Category == category)
+            return _roomRepository.Get().Where(r => r.Price >= priceMin && r.Price <= priceMax)
                 .Select(r => MapRoomToDto(r)).ToList();
         }
 
         public void Add(RoomDto roomDto)
         {
             var newRoom = new Room(
+                roomDto.Id,
                 roomDto.Number,
                 roomDto.Category,
                 roomDto.Capacity,
                 roomDto.Description,
                 roomDto.Price,
                 roomDto.Facilities);
-            Database.Rooms.Add(newRoom);
+            _roomRepository.Add(newRoom);
         }
 
-        public void Update(int number, RoomDto roomDto)
+        public void Update(Guid id, RoomDto roomDto)
         {
-            var room = Database.Rooms.SingleOrDefault(r => r.Number == number);
-            room?.Update(roomDto.Price, roomDto.Capacity, roomDto.Description, roomDto.Facilities);
+            var room = _roomRepository.GetById(id);
+            room?.Update(roomDto.Number, roomDto.Category, roomDto.Price, roomDto.Capacity, roomDto.Description, roomDto.Facilities);
+            _roomRepository.Edit(room);
         }
 
-        private static RoomDto MapRoomToDto(Room r)
+        public void Delete(Guid id)
+        {
+            _roomRepository.Delete(id);
+        }
+
+        private static RoomDto MapRoomToDto(Room room)
         {
             return new RoomDto(
-                r.Id,
-                r.Number,
-                r.Category,
-                r.Capacity,
-                r.Description,
-                r.Price,
-                r.Facilities);
+                room.Id,
+                room.Number,
+                room.Category,
+                room.Capacity,
+                room.Description,
+                room.Price,
+                room.Facilities,
+                MapReservations(room));
+        }
+
+        private static List<ReservationDto> MapReservations(Room room)
+        {
+            if (room.Reservations != null && room.Reservations.Any())
+            {
+                return room.Reservations.Select(r =>
+                    new ReservationDto(
+                    r.Id,
+                    r.RoomId,
+                    r.CheckIn,
+                    r.CheckOut,
+                    r.TotalPayment)).ToList();
+            }
+
+            return new List<ReservationDto>();
         }
     }
 }
