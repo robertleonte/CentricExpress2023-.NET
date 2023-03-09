@@ -19,7 +19,7 @@ namespace RoomWithAView.Business.Reservations
             return _reservationRepository.Get().Select(r => MapReservationToDto(r)).ToList();
         }
 
-        public ReservationDto? GetById(Guid id)
+        public ReservationDto GetById(Guid id)
         {
             var reservation = _reservationRepository.GetById(id);
             return MapReservationToDto(reservation);
@@ -34,7 +34,7 @@ namespace RoomWithAView.Business.Reservations
         public void Update(Guid id, ReservationDto reservationDto)
         {
             var reservation = _reservationRepository.GetById(id);
-            reservation?.Update(
+            reservation.Update(
                 reservationDto.RoomId,
                 reservationDto.CheckIn,
                 reservationDto.CheckOut,

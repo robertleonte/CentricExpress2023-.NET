@@ -17,7 +17,7 @@ namespace RoomWithAView.Business.Rooms
             return _roomRepository.Get().Select(r => MapRoomToDto(r)).ToList();
         }
 
-        public RoomDto? GetById(Guid id)
+        public RoomDto GetById(Guid id)
         {
              var room = _roomRepository.GetById(id);
             return MapRoomToDto(room);
@@ -45,7 +45,7 @@ namespace RoomWithAView.Business.Rooms
         public void Update(Guid id, RoomDto roomDto)
         {
             var room = _roomRepository.GetById(id);
-            room?.Update(roomDto.Number, roomDto.Category, roomDto.Price, roomDto.Capacity, roomDto.Description, roomDto.Facilities);
+            room.Update(roomDto.Number, roomDto.Category, roomDto.Price, roomDto.Capacity, roomDto.Description, roomDto.Facilities);
             _roomRepository.Edit(room);
         }
 
