@@ -19,7 +19,7 @@ namespace RoomWithAView.Data
                 5,
                 "Beautiful relaxing place for your tired feet",
                 500,
-                new List<string> { "Wi-Fi", "TV", "Air conditioner", "Mini playground" }
+                "Wi-Fi, TV, Air conditioner, Mini playground"
                 ),
             new Room(
                 101,
@@ -27,7 +27,7 @@ namespace RoomWithAView.Data
                 1,
                 "A perfect recharging space",
                 200,
-                new List<string> { "Wi-Fi", "TV", "Air conditioner", "Mini bar" }
+                 "Wi-Fi, TV, Air conditioner, Mini bar"
                 ),
             new Room(
                 102,
@@ -35,7 +35,7 @@ namespace RoomWithAView.Data
                 2,
                 "Let yourself be spoiled by the comfort",
                 400,
-                new List<string> { "Wi-Fi", "TV", "Air conditioner", "Bath tub" }
+                "Wi-Fi, TV, Air conditioner, Bath tub"
                 ),
             new Room(
                 200,
@@ -43,7 +43,7 @@ namespace RoomWithAView.Data
                 2,
                 "Let yourself be spoiled by the comfort",
                 400,
-                new List<string> { "Wi-Fi", "TV", "Air conditioner", "Bath tub" }
+                "Wi-Fi, TV, Air conditioner, Bath tub"
                 ),
             new Room(
                 201,
@@ -51,8 +51,8 @@ namespace RoomWithAView.Data
                 4,
                 "Enter the oasis of a calm and peaceful stay",
                 600,
-                new List<string> { "Wi-Fi", "TV", "Air conditioner", "Bath tub", "Mini bar", "Daily snacks", "Ocean view" }
+                "Wi-Fi, TV, Air conditioner, Bath tub, Mini bar, Daily snacks, Ocean view"
                 )
         };
-    }
+}
 }

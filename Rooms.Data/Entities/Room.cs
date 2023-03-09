@@ -14,7 +14,7 @@
 
         public int Price { get; set; }
 
-        public List<string> Facilities { get; set; }
+        public string Facilities { get; set; }
 
         public Room(
             int number,
@@ -22,7 +22,7 @@
             int capacity,
             string description,
             int price,
-            List<string> facilities)
+            string facilities)
         {
             Id = Guid.NewGuid();
             Number = number;
@@ -30,15 +30,15 @@
             Capacity = capacity;
             Description = description;
             Price = price;
-            Facilities = new List<string>(facilities);
+            Facilities = facilities;
         }
 
-        public void Update(int price, int capacity, string description, List<string> facilities)
+        public void Update(int price, int capacity, string description, string facilities)
         {
             Price = price;
             Capacity = capacity;
             Description = description;
-            Facilities = new List<string>(facilities);
+            Facilities = facilities;
         }
     }
 }
