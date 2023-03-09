@@ -8,17 +8,17 @@ namespace RoomWithAView.Controllers
     [Route("api/[controller]")]
     public class RoomsController : ControllerBase
     {
-        private readonly IRoomBusiness roomBusiness;
+        private readonly IRoomBusiness _roomBusiness;
 
         public RoomsController(IRoomBusiness roomBusiness)
         {
-            this.roomBusiness = roomBusiness;
+            this._roomBusiness = roomBusiness;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            var rooms = this.roomBusiness.GetAll();
+            var rooms = this._roomBusiness.GetAll();
             return Ok(rooms);
         }
 
@@ -26,7 +26,7 @@ namespace RoomWithAView.Controllers
         [Route("{number}")]
         public IActionResult GetByNumber(int number)
         {
-            var room = this.roomBusiness.GetByNumber(number);
+            var room = this._roomBusiness.GetByNumber(number);
             return Ok(room);
         }
 
@@ -34,30 +34,22 @@ namespace RoomWithAView.Controllers
         [Route("price")]
         public IActionResult FilterByPrice([FromQuery] int priceMin, [FromQuery] int priceMax)
         {
-            var roomsFiltered = this.roomBusiness.FilterByPrice(priceMin, priceMax);
-            return Ok(roomsFiltered);
-        }
-
-        [HttpGet]
-        [Route("category")]
-        public IActionResult FilterByCategory([FromQuery] string category)
-        {
-            var roomsFiltered = this.roomBusiness.FilterByCategory(category);
+            var roomsFiltered = this._roomBusiness.FilterByPrice(priceMin, priceMax);
             return Ok(roomsFiltered);
         }
 
         [HttpPut]
         [Route("{number}")]
-        public IActionResult Put(int number, [FromBody] RoomDto room)
+        public IActionResult Update(int number, [FromBody] RoomDto room)
         {
-            this.roomBusiness.Update(number, room);
+            this._roomBusiness.Update(number, room);
             return Ok(room);
         }
 
         [HttpPost]
         public IActionResult Add([FromBody] RoomDto room)
         {
-            this.roomBusiness.Add(room);
+            this._roomBusiness.Add(room);
             return Ok(room);
         }
     }
