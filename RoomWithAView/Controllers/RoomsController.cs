@@ -13,7 +13,7 @@ namespace RoomWithAView.Controllers
             {
                 Id = Guid.NewGuid(),
                 Description = "Beautiful relaxing place for your tired feet",
-                Facilities = new List<string> { "Wi-Fi", "TV", "Air conditioner", "Mini playground" },
+                Facilities =  "Wi-Fi, TV, Air conditioner, Mini playground",
                 Price = 500,
                 Category = "Suite",
                 Capacity = 5,
@@ -23,7 +23,7 @@ namespace RoomWithAView.Controllers
             {
                 Id = Guid.NewGuid(),
                 Description = "A perfect recharging space",
-                Facilities = new List<string> { "Wi-Fi", "TV", "Air conditioner", "Mini bar" },
+                Facilities =  "Wi-Fi, TV, Air conditioner, Mini bar",
                 Price = 200,
                 Category = "Single",
                 Capacity = 1,
@@ -33,7 +33,7 @@ namespace RoomWithAView.Controllers
             {
                 Id = Guid.NewGuid(),
                 Description = "Let yourself be spoiled by the comfort",
-                Facilities = new List<string> { "Wi-Fi", "TV", "Air conditioner", "Bath tub" },
+                Facilities =  "Wi-Fi, TV, Air conditioner, Bath tub",
                 Price = 400,
                 Category = "Double",
                 Capacity = 2,
@@ -43,7 +43,7 @@ namespace RoomWithAView.Controllers
             {
                 Id = Guid.NewGuid(),
                 Description = "Let yourself be spoiled by the comfort",
-                Facilities = new List<string> { "Wi-Fi", "TV", "Air conditioner", "Bath tub" },
+                Facilities =  "Wi-Fi, TV, Air conditioner, Bath tub",
                 Price = 400,
                 Category = "Double",
                 Capacity = 2,
@@ -53,7 +53,7 @@ namespace RoomWithAView.Controllers
             {
                 Id = Guid.NewGuid(),
                 Description = "Enter the oasis of a calm and peaceful stay",
-                Facilities = new List<string> { "Wi-Fi", "TV", "Air conditioner", "Bath tub", "Mini bar", "Daily snacks", "Ocean view" },
+                Facilities =  "Wi-Fi, TV, Air conditioner, Bath tub, Mini bar, Daily snacks, Ocean view",
                 Price = 600,
                 Category = "Deluxe",
                 Capacity = 4,

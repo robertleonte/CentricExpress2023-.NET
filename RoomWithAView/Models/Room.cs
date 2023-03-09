@@ -14,7 +14,7 @@
 
         public int Price { get; set; }
 
-        public List<string> Facilities { get; set; }
+        public string Facilities { get; set; }
 
         public Room()
         {
