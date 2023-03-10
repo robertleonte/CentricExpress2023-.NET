@@ -5,13 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using RoomWithAView.Data;
 
 #nullable disable
 
 namespace RoomWithAView.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230309101610_CreateDatabase")]
+    [Migration("20230310180940_CreateDatabase")]
     partial class CreateDatabase
     {
         /// <inheritdoc />
@@ -24,7 +25,7 @@ namespace RoomWithAView.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Rooms.Data.Entities.Reservation", b =>
+            modelBuilder.Entity("RoomWithAView.Data.Entities.Reservation", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -75,7 +76,7 @@ namespace RoomWithAView.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Rooms.Data.Entities.Room", b =>
+            modelBuilder.Entity("RoomWithAView.Data.Entities.Room", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -159,16 +160,16 @@ namespace RoomWithAView.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Rooms.Data.Entities.Reservation", b =>
+            modelBuilder.Entity("RoomWithAView.Data.Entities.Reservation", b =>
                 {
-                    b.HasOne("Rooms.Data.Entities.Room", null)
+                    b.HasOne("RoomWithAView.Data.Entities.Room", null)
                         .WithMany("Reservations")
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Rooms.Data.Entities.Room", b =>
+            modelBuilder.Entity("RoomWithAView.Data.Entities.Room", b =>
                 {
                     b.Navigation("Reservations");
                 });

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using RoomWithAView.Data;
 
 #nullable disable
 
@@ -21,7 +22,7 @@ namespace RoomWithAView.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Rooms.Data.Entities.Reservation", b =>
+            modelBuilder.Entity("RoomWithAView.Data.Entities.Reservation", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,7 +73,7 @@ namespace RoomWithAView.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Rooms.Data.Entities.Room", b =>
+            modelBuilder.Entity("RoomWithAView.Data.Entities.Room", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -156,16 +157,16 @@ namespace RoomWithAView.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Rooms.Data.Entities.Reservation", b =>
+            modelBuilder.Entity("RoomWithAView.Data.Entities.Reservation", b =>
                 {
-                    b.HasOne("Rooms.Data.Entities.Room", null)
+                    b.HasOne("RoomWithAView.Data.Entities.Room", null)
                         .WithMany("Reservations")
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Rooms.Data.Entities.Room", b =>
+            modelBuilder.Entity("RoomWithAView.Data.Entities.Room", b =>
                 {
                     b.Navigation("Reservations");
                 });
