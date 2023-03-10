@@ -14,7 +14,7 @@ namespace RoomWithAView.Business.Rooms
         }
         public List<RoomDto> GetAll()
         {
-            return _roomRepository.Get().Select(r => MapRoomToDto(r)).ToList();
+            return _roomRepository.Get().Select(room => MapRoomToDto(room)).ToList();
         }
 
         public RoomDto GetById(Guid id)
@@ -25,8 +25,8 @@ namespace RoomWithAView.Business.Rooms
 
         public List<RoomDto> FilterByPrice(int priceMin, int priceMax)
         {
-            return _roomRepository.Get().Where(r => r.Price >= priceMin && r.Price <= priceMax)
-                .Select(r => MapRoomToDto(r)).ToList();
+            return _roomRepository.Get().Where(room => room.Price >= priceMin && room.Price <= priceMax)
+                .Select(room => MapRoomToDto(room)).ToList();
         }
 
         public void Add(RoomDto roomDto)
@@ -71,13 +71,13 @@ namespace RoomWithAView.Business.Rooms
         {
             if (room.Reservations != null && room.Reservations.Any())
             {
-                return room.Reservations.Select(r =>
+                return room.Reservations.Select(reservation =>
                     new ReservationDto(
-                    r.Id,
-                    r.RoomId,
-                    r.CheckIn,
-                    r.CheckOut,
-                    r.TotalPayment)).ToList();
+                    reservation.Id,
+                    reservation.RoomId,
+                    reservation.CheckIn,
+                    reservation.CheckOut,
+                    reservation.TotalPayment)).ToList();
             }
 
             return new List<ReservationDto>();

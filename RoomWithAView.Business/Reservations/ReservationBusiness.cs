@@ -1,5 +1,4 @@
-﻿using Rooms.Data;
-using Rooms.Data.Entities;
+﻿using Rooms.Data.Entities;
 using RoomWithAView.Business.Dto;
 using RoomWithAView.Data;
 
@@ -16,7 +15,7 @@ namespace RoomWithAView.Business.Reservations
 
         public List<ReservationDto> GetAll()
         {
-            return _reservationRepository.Get().Select(r => MapReservationToDto(r)).ToList();
+            return _reservationRepository.Get().Select(reservation => MapReservationToDto(reservation)).ToList();
         }
 
         public ReservationDto GetById(Guid id)
@@ -48,14 +47,14 @@ namespace RoomWithAView.Business.Reservations
             _reservationRepository.Delete(id);
         }
 
-        private static ReservationDto MapReservationToDto(Reservation r)
+        private static ReservationDto MapReservationToDto(Reservation reservation)
         {
             return new ReservationDto(
-                r.Id,
-                r.RoomId,
-                r.CheckIn,
-                r.CheckOut,
-                r.TotalPayment);
+                reservation.Id,
+                reservation.RoomId,
+                reservation.CheckIn,
+                reservation.CheckOut,
+                reservation.TotalPayment);
         }
     }
 }
