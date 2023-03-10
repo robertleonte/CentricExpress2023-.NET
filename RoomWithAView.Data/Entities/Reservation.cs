@@ -21,15 +21,15 @@ namespace RoomWithAView.Data.Entities
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
-        public Guid RoomId { get; set; }
+        public Guid RoomId { get; private set; }
 
-        public DateTime CheckIn { get; set; }
+        public DateTime CheckIn { get; private set; }
 
-        public DateTime CheckOut { get; set; }
+        public DateTime CheckOut { get; private set; }
 
-        public int TotalPayment { get; set; }
+        public int TotalPayment { get; private set; }
 
         public void Update(Guid roomId, DateTime checkIn, DateTime checkOut, int totalPayment)
         {
