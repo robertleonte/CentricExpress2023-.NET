@@ -8,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<IRoomBusiness, RoomBusiness>();
-builder.Services.AddSingleton<IReservationBusiness, ReservationBusiness>();
+builder.Services.AddScoped<IRoomBusiness, RoomBusiness>();
+builder.Services.AddScoped<IReservationBusiness, ReservationBusiness>();
 
 var app = builder.Build();
 
