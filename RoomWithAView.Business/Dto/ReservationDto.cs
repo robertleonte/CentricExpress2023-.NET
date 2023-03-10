@@ -2,16 +2,6 @@
 {
     public class ReservationDto
     {
-        public Guid Id { get; set; }
-
-        public Guid RoomId { get; set; }
-
-        public DateTime CheckIn { get; set; }
-
-        public DateTime CheckOut { get; set; }
-
-        public int TotalPayment { get; set; }
-
         public ReservationDto(
             Guid id,
             Guid roomId,
@@ -25,5 +15,15 @@
             CheckOut = checkOut;
             TotalPayment = totalPayment;
         }
+
+        public Guid Id { get; set; }
+
+        public Guid RoomId { get; set; }
+
+        public DateTime CheckIn { get; set; }
+
+        public DateTime CheckOut { get; set; }
+
+        public int TotalPayment { get; set; }
     }
 }

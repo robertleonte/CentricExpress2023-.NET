@@ -2,20 +2,6 @@
 {
     public class RoomDto
     {
-        public Guid Id { get; set; }
-
-        public int Number { get; set; }
-
-        public string Category { get; set; }
-
-        public int Capacity { get; set; }
-
-        public string Description { get; set; }
-
-        public int Price { get; set; }
-
-        public string Facilities { get; set; }
-
         public RoomDto(
             Guid id,
             int number,
@@ -33,5 +19,19 @@
             Price = price;
             Facilities = facilities;
         }
+
+        public Guid Id { get; set; }
+
+        public int Number { get; set; }
+
+        public string Category { get; set; }
+
+        public int Capacity { get; set; }
+
+        public string Description { get; set; }
+
+        public int Price { get; set; }
+
+        public string Facilities { get; set; }
     }
 }
