@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomWithAView.WebApi", "RoomWithAView\RoomWithAView.WebApi.csproj", "{845427DD-4047-4485-9936-868ED962AA26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomWithAView.WebApi", "RoomWithAView.WebApi\RoomWithAView.WebApi.csproj", "{2E72863C-1ECD-4B47-A6C5-79ACF7F6158F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{845427DD-4047-4485-9936-868ED962AA26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{845427DD-4047-4485-9936-868ED962AA26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{845427DD-4047-4485-9936-868ED962AA26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{845427DD-4047-4485-9936-868ED962AA26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E72863C-1ECD-4B47-A6C5-79ACF7F6158F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E72863C-1ECD-4B47-A6C5-79ACF7F6158F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E72863C-1ECD-4B47-A6C5-79ACF7F6158F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E72863C-1ECD-4B47-A6C5-79ACF7F6158F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
