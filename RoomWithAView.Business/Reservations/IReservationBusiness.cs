@@ -11,5 +11,7 @@ namespace RoomWithAView.Business.Reservations
         void Add(ReservationDto reservationDto);
 
         void Update(Guid id, ReservationDto reservationDto);
+
+        void Delete(Guid id);
     }
 }

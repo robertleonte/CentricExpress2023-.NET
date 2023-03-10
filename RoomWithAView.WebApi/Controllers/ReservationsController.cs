@@ -12,13 +12,13 @@ namespace RoomWithAView.WebApi.Controllers
 
         public ReservationsController(IReservationBusiness reservationBusiness)
         {
-            this._reservationBusiness = reservationBusiness;
+            _reservationBusiness = reservationBusiness;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            var reservations = this._reservationBusiness.GetAll();
+            var reservations = _reservationBusiness.GetAll();
             return Ok(reservations);
         }
 
@@ -26,7 +26,7 @@ namespace RoomWithAView.WebApi.Controllers
         [Route("{id}")]
         public IActionResult GetById(Guid id)
         {
-            var reservation = this._reservationBusiness.GetById(id);
+            var reservation = _reservationBusiness.GetById(id);
             return Ok(reservation);
         }
 
@@ -34,15 +34,23 @@ namespace RoomWithAView.WebApi.Controllers
         [Route("{id}")]
         public IActionResult Update(Guid id, [FromBody] ReservationDto reservationDto)
         {
-            this._reservationBusiness.Update(id, reservationDto);
+            _reservationBusiness.Update(id, reservationDto);
             return Ok(reservationDto);
         }
 
         [HttpPost]
         public IActionResult Add([FromBody] ReservationDto reservationDto)
         {
-            this._reservationBusiness.Add(reservationDto);
+            _reservationBusiness.Add(reservationDto);
             return Ok(reservationDto);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            _reservationBusiness.Delete(id);
+            return Ok();
         }
     }
 }

@@ -2,21 +2,8 @@
 {
     public class Room
     {
-        public Guid Id { get; set; }
-
-        public int Number { get; set; }
-
-        public string Category { get; set; }
-
-        public int Capacity { get; set; }
-
-        public string Description { get; set; }
-
-        public int Price { get; set; }
-
-        public string Facilities { get; set; }
-
         public Room(
+            Guid id,
             int number,
             string category,
             int capacity,
@@ -24,7 +11,7 @@
             int price,
             string facilities)
         {
-            Id = Guid.NewGuid();
+            Id = id;
             Number = number;
             Category = category;
             Capacity = capacity;
@@ -33,8 +20,26 @@
             Facilities = facilities;
         }
 
-        public void Update(int price, int capacity, string description, string facilities)
+        public Guid Id { get; private set; }
+
+        public int Number { get; private set; }
+
+        public string Category { get; private set; }
+
+        public int Capacity { get; private set; }
+
+        public string Description { get; private set; }
+
+        public int Price { get; private set; }
+
+        public string Facilities { get; private set; }
+
+        public IEnumerable<Reservation> Reservations { get; set; }
+
+        public void Update(int number, string category, int price, int capacity, string description, string facilities)
         {
+            Number = number;
+            Category = category;
             Price = price;
             Capacity = capacity;
             Description = description;

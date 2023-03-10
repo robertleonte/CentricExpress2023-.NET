@@ -12,13 +12,13 @@ namespace RoomWithAView.WebApi.Controllers
 
         public RoomsController(IRoomBusiness roomBusiness)
         {
-            this._roomBusiness = roomBusiness;
+            _roomBusiness = roomBusiness;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            var rooms = this._roomBusiness.GetAll();
+            var rooms = _roomBusiness.GetAll();
             return Ok(rooms);
         }
 
@@ -26,7 +26,7 @@ namespace RoomWithAView.WebApi.Controllers
         [Route("{id}")]
         public IActionResult GetById(Guid id)
         {
-            var room = this._roomBusiness.GetById(id);
+            var room = _roomBusiness.GetById(id);
             return Ok(room);
         }
 
@@ -34,7 +34,7 @@ namespace RoomWithAView.WebApi.Controllers
         [Route("price")]
         public IActionResult FilterByPrice([FromQuery] int priceMin, [FromQuery] int priceMax)
         {
-            var roomsFiltered = this._roomBusiness.FilterByPrice(priceMin, priceMax);
+            var roomsFiltered = _roomBusiness.FilterByPrice(priceMin, priceMax);
             return Ok(roomsFiltered);
         }
 
@@ -42,15 +42,23 @@ namespace RoomWithAView.WebApi.Controllers
         [Route("{id}")]
         public IActionResult Update(Guid id, [FromBody] RoomDto room)
         {
-            this._roomBusiness.Update(id, room);
+            _roomBusiness.Update(id, room);
             return Ok(room);
         }
 
         [HttpPost]
         public IActionResult Add([FromBody] RoomDto room)
         {
-            this._roomBusiness.Add(room);
+            _roomBusiness.Add(room);
             return Ok(room);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            _roomBusiness.Delete(id);
+            return Ok();
         }
     }
 }

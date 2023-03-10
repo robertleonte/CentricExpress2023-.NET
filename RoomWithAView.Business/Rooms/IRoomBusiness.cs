@@ -13,5 +13,7 @@ namespace RoomWithAView.Business.Rooms
         void Add(RoomDto roomDto);
 
         void Update(Guid id, RoomDto roomDto);
+
+        void Delete(Guid id);
     }
 }

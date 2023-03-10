@@ -26,6 +26,7 @@ namespace RoomWithAView.Business.Rooms
         public void Add(RoomDto roomDto)
         {
             var newRoom = new Room(
+                roomDto.Id,
                 roomDto.Number,
                 roomDto.Category,
                 roomDto.Capacity,
@@ -38,7 +39,13 @@ namespace RoomWithAView.Business.Rooms
         public void Update(Guid id, RoomDto roomDto)
         {
             var roomToUpdate = Database.Rooms.SingleOrDefault(room => room.Id == id);
-            roomToUpdate?.Update(roomDto.Price, roomDto.Capacity, roomDto.Description, roomDto.Facilities);
+            roomToUpdate?.Update(roomDto.Number, roomDto.Category, roomDto.Price, roomDto.Capacity, roomDto.Description, roomDto.Facilities);
+        }
+
+        public void Delete(Guid id)
+        {
+            var roomToDelete = Database.Rooms.SingleOrDefault(room => room.Id == id);
+            Database.Rooms.Remove(roomToDelete);
         }
 
         private static RoomDto MapRoomToDto(Room room)

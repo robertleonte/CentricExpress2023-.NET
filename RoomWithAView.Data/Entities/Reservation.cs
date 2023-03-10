@@ -2,28 +2,29 @@
 {
     public class Reservation
     {
-        public Guid Id { get; set; }
-
-        public Guid RoomId { get; set; }
-
-        public DateTime CheckIn { get; set; }
-
-        public DateTime CheckOut { get; set; }
-
-        public int TotalPayment { get; set; }
-
         public Reservation(
+            Guid id,
             Guid roomId,
             DateTime checkIn,
             DateTime checkOut,
             int totalPayment)
         {
-            Id = Guid.NewGuid();
+            Id = id;
             RoomId = roomId;
             CheckIn = checkIn;
             CheckOut = checkOut;
             TotalPayment = totalPayment;
         }
+
+        public Guid Id { get; private set; }
+
+        public Guid RoomId { get; private set; }
+
+        public DateTime CheckIn { get; private set; }
+
+        public DateTime CheckOut { get; private set; }
+
+        public int TotalPayment { get; private set; }
 
         public void Update(Guid roomId, DateTime checkIn, DateTime checkOut, int totalPayment)
         {
