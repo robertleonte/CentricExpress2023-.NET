@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomWithAView.Business", "R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomWithAView.Data", "RoomWithAView.Data\RoomWithAView.Data.csproj", "{7CAC84D8-80F1-4A01-96DD-88E9F45F1BC2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Unit Tests", "04 - Unit Tests", "{546C95D1-5691-48A7-AF84-FF216D153F84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomWithAView.Tests", "RoomWithAView.Tests\RoomWithAView.Tests.csproj", "{88439A2D-C203-41D7-AC0C-21E0BBCF01EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,10 @@ Global
 		{7CAC84D8-80F1-4A01-96DD-88E9F45F1BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CAC84D8-80F1-4A01-96DD-88E9F45F1BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CAC84D8-80F1-4A01-96DD-88E9F45F1BC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88439A2D-C203-41D7-AC0C-21E0BBCF01EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88439A2D-C203-41D7-AC0C-21E0BBCF01EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88439A2D-C203-41D7-AC0C-21E0BBCF01EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88439A2D-C203-41D7-AC0C-21E0BBCF01EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +49,7 @@ Global
 		{84F08FCD-6946-43E9-B5E0-E9CA684F560F} = {2BF0B180-7AFA-4933-8EAD-C3288065156A}
 		{4659BCAB-5E58-4144-B724-3A2052705FA7} = {9FB78A81-E5D4-4E8B-B323-15822FFA5FEE}
 		{7CAC84D8-80F1-4A01-96DD-88E9F45F1BC2} = {7A72BBC8-3524-4242-B492-0DCC7F0B5839}
+		{88439A2D-C203-41D7-AC0C-21E0BBCF01EA} = {546C95D1-5691-48A7-AF84-FF216D153F84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {70DF440B-BB5C-48C3-B14B-BD4C4CDC6934}

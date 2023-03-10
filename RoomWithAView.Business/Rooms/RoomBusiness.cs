@@ -25,6 +25,11 @@ namespace RoomWithAView.Business.Rooms
 
         public List<RoomDto> FilterByPrice(int priceMin, int priceMax)
         {
+            if (priceMin > priceMax)
+            {
+                throw new InvalidDataException("Minimum price cannot be lower than maximum price");
+            }
+
             return _roomRepository.Get().Where(room => room.Price >= priceMin && room.Price <= priceMax)
                 .Select(room => MapRoomToDto(room)).ToList();
         }
