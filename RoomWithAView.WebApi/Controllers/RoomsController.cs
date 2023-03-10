@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using RoomWithAView.Business.Rooms;
 using RoomWithAView.Business.Dto;
+using RoomWithAView.Business.Rooms;
 
-namespace RoomWithAView.Controllers
+namespace RoomWithAView.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

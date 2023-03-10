@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using RoomWithAView.Business.Reservations;
 using RoomWithAView.Business.Rooms;
 using RoomWithAView.Data;
-using Rooms.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

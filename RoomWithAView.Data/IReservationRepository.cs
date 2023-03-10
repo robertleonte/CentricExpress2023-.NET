@@ -1,4 +1,4 @@
-﻿using Rooms.Data.Entities;
+﻿using RoomWithAView.Data.Entities;
 
 namespace RoomWithAView.Data
 {

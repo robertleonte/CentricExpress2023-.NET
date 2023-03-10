@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Rooms.Data.Entities;
+using RoomWithAView.Data.Entities;
 
-namespace Rooms.Data
+namespace RoomWithAView.Data
 {
     public class DatabaseContext : DbContext
     {

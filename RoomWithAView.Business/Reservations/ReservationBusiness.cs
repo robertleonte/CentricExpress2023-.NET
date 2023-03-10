@@ -1,6 +1,6 @@
-﻿using Rooms.Data.Entities;
-using RoomWithAView.Business.Dto;
+﻿using RoomWithAView.Business.Dto;
 using RoomWithAView.Data;
+using RoomWithAView.Data.Entities;
 
 namespace RoomWithAView.Business.Reservations
 {
