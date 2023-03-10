@@ -2,7 +2,7 @@
 using RoomWithAView.Business.Dto;
 using RoomWithAView.Business.Reservations;
 
-namespace RoomWithAView.Controllers
+namespace RoomWithAView.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

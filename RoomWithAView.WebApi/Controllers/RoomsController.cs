@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using RoomWithAView.Business.Rooms;
 using RoomWithAView.Business.Dto;
+using RoomWithAView.Business.Rooms;
 
-namespace RoomWithAView.Controllers
+namespace RoomWithAView.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -23,7 +23,7 @@ namespace RoomWithAView.Controllers
         }
 
         [HttpGet]
-        [Route("{number}")]
+        [Route("{id}")]
         public IActionResult GetById(Guid id)
         {
             var room = this._roomBusiness.GetById(id);
@@ -39,7 +39,7 @@ namespace RoomWithAView.Controllers
         }
 
         [HttpPut]
-        [Route("{number}")]
+        [Route("{id}")]
         public IActionResult Update(Guid id, [FromBody] RoomDto room)
         {
             this._roomBusiness.Update(id, room);

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Rooms.Data\RoomWithAView.Data.csproj" />
+    <ProjectReference Include="..\RoomWithAView.Data\RoomWithAView.Data.csproj" />
   </ItemGroup>
 
 </Project>
